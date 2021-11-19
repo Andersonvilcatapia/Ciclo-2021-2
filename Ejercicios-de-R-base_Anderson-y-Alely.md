@@ -1,6 +1,6 @@
 Ejercicios de R base
 ================
-Anderson Vilca Tapia y Alely Crespo Ccerhuayo
+GRUPO 18: Alely Gabriela Crespo Ccerhuayo y Anderson Thomas Vilca Tapia
 18/11/2021
 
 # PARTE 1
