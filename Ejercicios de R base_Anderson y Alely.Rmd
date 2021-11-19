@@ -1,162 +1,256 @@
-#PARTE 1
+---
+title: "Ejercicios de R base"
+author: "Anderson Vilca Tapia y Alely Crespo Ccerhuayo"
+date: "18/11/2021"
+output: github_document
+---
 
-#Ejercicio 1
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-# a)
+# PARTE 1
 
+## Ejercicio 1
+### Calcula los valores numéricos aproximados de:
+
+### a)
+
+```{r}
 x <-(0.3*0.15)/((0.3*0.15)+(0.2*0.8)+(0.5*0.12))
 
-x            #Al correr x sale el valor
+x            # Al correr x sale el valor
 
-# b)
+```
 
+### b)
+
+```{r}
 y <- 5^6/(factorial(6))*exp(-5)
 
-y
+y             # Se comprueba
 
-# c) 
+```
 
-#En este problema se puede observar que hay una conbinacion, por lo cual procedemos a resolver asi...
+### c) 
+
+```{r}
+# En este problema se puede observar que hay una conbinacion, por lo cual procedemos a resolver asi...
 
 (choose(20,7))*((0.4)^7)*((0.6)^13)
 
-#Ejercicio 2
+```
 
-# a) 
+## Ejercicio 2
+### Realizar la siguiente suma
+
+### a)
+
+```{r}
 
 sum(1:1000)
 
-# b)
+```
+
+### b)
+
+```{r}
 
 sum(2^(0:10))
 
-#Ejercicio 3
+```
 
-load("C:/Users/PC/Downloads/ei1012-1516-la-s1-datos.RData")
+## Ejercicio 3
+### El vector grupo representa el grupo al que pertenece una serie de alumnos
 
+### a)¿Cuántos elementos tiene?
+
+```{r}
 load(url("https://goo.gl/uDzU8v"))
 
 grupo
 
-# a)
+length(grupo)       #Cantidad
 
-length(grupo)
+```
 
-# b)
+### b)¿En qué posiciones del vector está la letra “A?”
 
+```{r}
 which(grupo == "A")
+```
 
-#Ejercicio 4
+## Ejercicio 4
+### El vector nota representa la nota de un examen de los alumnos que están en los grupos del vector grupo.
 
+```{r}
 nota
+```
 
-# a)
+### a)¿Cuanto suman todas las notas?
+
+```{r}
 
 sum(nota)
 
-# b)
+```
+### b)¿Cual es la media aritmética de todas las notas?
+
+```{r}
 
 mean(nota)
 
-# c)
+```
+
+### c)¿En qué posiciones están las notas mayores de 7.0?
+
+```{r}
 
 which(nota> 7.0)
 
-# d)
+```
+### d)Visualiza las notas ordenadas de mayor a menor
+
+```{r}
 
 sort(nota, decreasing = T)
 
-# e)
+```
+
+### e)¿En qué posición está la nota máxima?
+
+```{r}
 
 which(nota == max(nota))
 
-#Ejercicio 5 
+```
 
-grupo
+## Ejercicio 5
+### A partir de los vectores grupo y nota definidos.
 
-nota
+### a)Suma las notas de los 10 primeros alumnos del vector
 
-# a)
+```{r}
 
 sum(nota[1:10])
 
-# b)
+```
+
+### b)¿Cuántos alumnos hay del grupo C?
+
+```{r}
 
 length(grupo[grupo == "C"])
+```
 
-# c)
+### c)¿Cuántos alumnos han aprobado?
+
+```{r}
 
 length(nota[nota>=5])
 
-# d)
+```
+
+### d)¿Cuántos alumnos del grupo B han aprobado?
+
+```{r}
 
 length(nota[grupo == "B" & nota >= 5])
 
-# e)
+```
+
+### e)¿Qué porcentaje de alumnos del grupo C han aprobado?
+
+```{r}
 
 (length(nota[grupo == "C" & nota >= 5])/length(nota[grupo == "C"]))*100
 
-# f)
+```
+
+### f)¿De qué grupos son la máxima y mínima notas de toda la muestra?
+
+```{r}
 
 grupo[nota == max(nota)]
 grupo[nota == min(nota)]
 
-# g)
+```
 
-install.packages("dplyr")
+### g)Nota media de los alumnos de grupo A y B, juntos, considerando sólo a los que han aprobado.
 
+```{r}
 library(dplyr)
+
 notasEst <- dplyr::tibble(grupoAyB = grupo, notaAyB = nota)
 notasEst %>%
   dplyr::filter((grupoAyB == "A" & notaAyB >=5) | (grupoAyB == "B" & notaAyB >= 5)) %>%
   dplyr::summarise(mean(notaAyB))
 
-#Ejercicio 6 
 
-#cuantil 66 de todos
+
+
+
+```
+
+## Ejercicio 6 
+
+```{r}
+# Cuantil 66 de todos
 quantile(nota, probs = 0.66)
 
-#cuantil 66 del grupo "C" 
+# Cuantil 66 del grupo "C" 
 quantile(nota[grupo == "C"], probs = 0.66)
+```
 
-#Ejercicio  7
-#Porcentaje del total de alumnos que tienen una nota menor o igual que 4.9 
+## Ejercicio  7
+
+```{r}
+# Porcentaje del total de alumnos que tienen una nota menor o igual que 4.9 
 ((length(nota[nota <= 4.9 ]))/(length(nota)))*100
 
-#porcentaje mayor o igual que 4.9
+# Porcentaje mayor o igual que 4.9
 ((length(nota[nota >= 4.9]))/(length(nota)))*100
+```
 
 
-#Ejercicio 8
+## Ejercicio 8
 
-install.packages("ggplot2")
-
+```{r}
 library(ggplot2)
 notasEst <- dplyr::tibble(grupo, nota)
 notasEst %>% ggplot(mapping = aes(x = grupo, y = nota)) +
   geom_boxplot()
+```
 
-#Ejercicio 9
+## Ejercicio 9
 
+```{r}
 conc
+```
 
-# a) 
+### a)¿Cuál ha sido la concentración máxima?
+```{r}
 max(conc)
+```
 
-#b)
+### b)¿En cuántos de los muestreos se ha superado la concentración de 40.0 ppm?
 
+```{r}
 length(conc[conc > 40.0])
+```
+### c)¿Cuál ha sido la concentración media del día?
 
-# c)
-
+```{r}
 mean(conc)
+```
+### d)¿Cuáles fueron las 10 mediciones más bajas del día? 
 
-# d) 
-
+```{r}
 sort(conc)[1:10]
+```
+### e)Si la primera medida fue a las 00:00. ¿A qué hora del día se alcanzó la concentración máxima?
 
-# e)
-
+```{r}
 fecha <- seq(
   as.POSIXct("2021-01-01 00:00"),
   length.out = length(conc),
@@ -167,11 +261,14 @@ fecha <- seq(
 concYfech <- data.frame(conc, fecha)
 #maximo de concentracion con fecha
 concYfech[conc == max(conc),]
+```
 
-#PARTE 2
+# PARTE 2
 
-#Ejercicio 1
+## Ejercicio 1
+### Graficar los puntos  (1,1),(2,4),(3,6),(4,8),(5,2),(6,36),(7,49),(8,61),(9,81),(10,100) en un plano utilizando RStudio.
 
+```{r}
 x<-c(1,2,3,4,5,6,7,8,9,10)
 y<-c(1,4,9,16,25,36,49,61,81,100)
 
@@ -185,57 +282,87 @@ View(DF2)
 ggplot(data = DF2) +
   geom_point(mapping = aes(x =V1 , y =V2), color = "blue")
 
-#Ejercicio 2
+```
 
+## Ejercicio 2
+### Ingresar la matriz 
+
+```{r}
 matrix(c(1,2,3,2,4,6,3,6,9,4,8,12), nrow = 4, byrow = T)
 
+# Otra forma
 l<-c(1,2,3,4,2,4,6,8,3,6,9,12)
 A<-matrix(l,ncol = 3,nrow = 4)
-A
 
-#Ejercicio 3
+A    # Matriz A
+```
 
+## Ejercicio 3 
+### Ingresar la matriz
+
+```{r}
 3*diag(3)
+```
 
-#Ejercicio 4
+## Ejercicio 4
+### Crea una función que cree una matriz nula ingresando las dimensiones
 
+```{r}
 matrizY<-function(f,c){
   P<-matrix(0,nrow = f,ncol = c)
   return(P)
 }
 matrizY(5,4)
+```
 
-#Ejercicio 5
+## Ejercicio 5
+
+```{r}
 
 B<-diag(4)
 B[1,1]<-0
 B[2,2]<-2
 B[3,3]<-3
 B[4,4]<-4
-B
 
-#otra forma 
+B  # Matriz B
+
+# Otra forma
+
 diag(x = c(0,2,3,4),nrow = 4)
-#Ejercicio 6
+```
 
+## Ejercicio 6
+
+```{r}
 t(A)
+```
 
-#Ejericio 7
+## Ejercicio 7
+###  Realizar las siguientes operaciones A+B ,  A−B ,  3B  y  AB
+
+```{r}
+#Las dimensiones son incompatibles.
+
+"A+B" 
 
 #Las dimensiones son incompatibles.
-A+B 
 
-#Las dimensiones son incompatibles.
-A-B 
+"A-B" 
 
 # La matriz de la pregunta 5 por tres
+
 3*B
 
 #Filas y columnas diferentes
-A%*%B 
 
-#Ejercicio 8
+"A%*%B" 
+```
 
+## Ejercicio 8
+### Crea una función para calcular P^6
+
+```{r}
 m<-function(e){
   d<-c(1,-2,1,2,4,0,3,-2,1)
   m<-matrix(d,ncol = 3)
@@ -243,12 +370,12 @@ m<-function(e){
   return(r)
 }
 m(6)
+```
 
+## Ejercicio 9
+### Resolver el sistema de ecuaciones
 
-
-
-
-#Ejercicio 9
+```{r}
 
 ecuaciones <- rbind(c(3, -1, 1), 
                     c(9, -2, 1), 
@@ -256,28 +383,47 @@ ecuaciones <- rbind(c(3, -1, 1),
 equivalencias <- c(-1, -9, -9)
 solve(ecuaciones, equivalencias)
 
-#Ejercicio 10
+```
 
+## Ejercicio 10
+### Utilizando la ayuda de R, investigue para qué sirven las funciones
+
+```{r}
 ?eigen()
 ?det()
+```
 
-#Ejercicio 11
+## Ejercicio 11
+### Considerando las matrices
 
+```{r}
 B <- matrix(c(1:10, seq(2, 20, by = 2), seq(3, 30, by = 3), seq(4, 40, by = 4), 
               seq(5, 50, by = 5)), nrow = 10)
+              
 A <- matrix(c(rep(c(0,1),7), rep(c(0,0,1),2),1,0,1,1,0), nrow = 5, byrow = T)
 
-(B %*% A)-(A)%*%t(B) 
 
-#Ejercicio 12
+```
+### Calcular A⋅B−AB^t
 
+```{r}
+
+#(B %*% A)-(A)%*%t(B)     no se resuelve por diferentes dimesiones
+```
+
+## Ejercicio 12
+### Considere
+
+```{r}
 x2 <- matrix(c(rep(1,5), 1, -1, 0:2), nrow = 5, byrow = F)
 y2 <- matrix(c(0,0,1,1,3), nrow = 5, byrow = F)
 
 solve(t(x2)%*%x2)%*%t(x2)%*%y2
+```
 
-#Ejercicio 13
-
+## Ejercicio 13
+### Corre el siguiente código para cargar los vectores year y co2 en memoria
+```{r}
 data(co2)
 means = aggregate(co2, FUN=mean)
 year = as.vector(time(means))
@@ -296,13 +442,18 @@ plot(x = df_co2$year[2:39], y = vect_diferencia, xlab = "Años", ylab = "Variaci
      main = "Diferencia de CO2 & tiempo", type = "o", pch = 16, xlim = c(1960,2020),
      ylim = c(0,3))
 points(2020, 2.64, pch = 4, col = "red")
+```
 
-#Ejercicio 14
+## Ejercicio 14  
 
+```{r}
 # a)
+
 rainfalldf <- read.csv("C:/Users/PC/Downloads/rainfall.csv")
 
 # b)
+
 rainfalldf[(rainfalldf$sep > 180),]
 rain180 <- rainfalldf[(rainfalldf$sep > 180) | (rainfalldf$oct > 180) | (rainfalldf$nov > 180) | (rainfalldf$dec > 180) | (rainfalldf$jan > 180) | (rainfalldf$feb > 180) | (rainfalldf$mar > 180) | (rainfalldf$apr > 180) | (rainfalldf$may > 180),]
 rain180$name
+```
