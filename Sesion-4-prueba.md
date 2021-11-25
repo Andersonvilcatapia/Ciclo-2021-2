@@ -1,6 +1,6 @@
 Prueba y borrar
 ================
-Anderson
+Anderson  y Alely C.
 12/11/2021
 
 ## Ejercicio 1
