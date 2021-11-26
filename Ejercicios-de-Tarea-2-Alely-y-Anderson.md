@@ -1,7 +1,9 @@
 Tarea 2 Ejercicios
 ================
-Integrantes: Crespo Ccerhuayo, Alely Gabriela y Vilca Tapia, Anderson Thomas
+Integrantes Grupo 18 : Crespo Ccerhuayo, Alely Gabriela y Vilca Tapia, Anderson Thomas  
 25/11/2021
+
+<img src = "https://upload.wikimedia.org/wikipedia/commons/3/3a/UNMSM_coatofarms_seal.svg" width = "80" height = "80">
 
 # Ejercicios
 
