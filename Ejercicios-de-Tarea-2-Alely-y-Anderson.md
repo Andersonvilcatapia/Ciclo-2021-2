@@ -1,6 +1,6 @@
 Tarea 2 Ejercicios
 ================
-Anderson Vilca & Alely Crespo
+Integrantes: Crespo Ccerhuayo, Alely Gabriela y Vilca Tapia, Anderson Thomas
 25/11/2021
 
 # Ejercicios
