@@ -7,7 +7,7 @@ Integrantes: Crespo Ccerhuayo, Alely Gabriela y Vilca Tapia, Anderson Thomas
 
 ## Ejercicio 1
 
-### ¿Qué cantidad de dinero sobra al repartir 10000 $ entre 3 personas?
+### ¿Qué cantidad de dinero sobra al repartir 10000 $ entre 3 personas
 
 ``` r
 dinero_sobrante <- 10000 %% 3
