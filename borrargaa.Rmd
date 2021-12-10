@@ -1,0 +1,36 @@
+---
+title: "Borrar"
+author: "Anderson Vilca"
+date: "10/12/2021"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Ejercicio borrar
+
+```{r}
+N <- 2
+
+if (N > 2){
+  N <- N-2
+}else{
+  if(N%%2 == 0){
+    print("Par");
+  }else{
+    print("Impar")
+  }
+}
+
+```
+
+#Ejercicio 2
+
+```{r}
+
+
+
+
+```
